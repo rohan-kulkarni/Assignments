@@ -1,0 +1,79 @@
+<html>
+	<head>
+		<title>JS Assignment</title>
+		<script type="text/javascript">
+			function btnClick(x)
+    		{
+    			
+    			if(document.getElementById('g').checked)
+    			{
+    				if(x.bgColor=="Green")
+    				{
+    					alert("already Green");
+    				}
+    				else
+    				{
+            			x.bgColor = "Green";
+            		}    
+    			}
+    			else if(document.getElementById('b').checked)
+    			{
+            		if(x.bgColor=="Blue")
+    				{
+    					alert("already Blue");
+    				}
+    				else
+    				{
+            			x.bgColor = "Blue";
+            		}   
+    			}
+    			else if(document.getElementById('r').checked)
+    			{
+            		if(x.bgColor=="Red")
+    				{
+    					alert("already Red");
+    				}
+    				else
+    				{
+            			x.bgColor = "Red";
+            		}     
+    			}
+    		}
+            function reset() 
+            {
+                var table = document.getElementById('mytable');
+                for (var r = 0, n = table.rows.length; r < n; r++) 
+                {
+                    for (var c = 0, m = table.rows[r].cells.length; c < m; c++) 
+                    {
+                        table.rows[r].cells[c].bgColor="white";
+                    }
+                }
+            }
+		</script>
+	</head>
+	<body>
+		<input type="radio" name="color" id="g">Green</input>
+		<input type="radio" name="color" id="b">Blue</input>
+		<input type="radio" name="color" id="r">Red</input>
+		<table border=1 id="mytable">
+			<tr>
+				<td onclick="btnClick(this)" value="1" id =1> 1 </td>
+				<td onclick="btnClick(this)" value="2" id =2> 2 </td>
+				<td onclick="btnClick(this)" value="3" id =3> 3 </td>
+			</tr>
+			<tr>
+				<td id=4 onclick="btnClick(this)" value="4"> 4 </td>
+				<td id=5 onclick="btnClick(this)" value="5"> 5 </td>
+				<td id=6 onclick="btnClick(this)" value="6"> 6 </td>
+			</tr>
+			<tr>
+				<td id=7 onclick="btnClick(this)" value="7"> 7 </td>
+				<td id=8 onclick="btnClick(this)" value="8"> 8 </td>
+				<td id=9 onclick="btnClick(this)" value="9"> 9 </td>
+			</tr>
+		</table>
+		<input type="reset" name="reset" id="reset" onclick="reset()"></input>
+		<input type="button" name="shuffle" id="shuffle"></input>
+	</body>
+</html>
