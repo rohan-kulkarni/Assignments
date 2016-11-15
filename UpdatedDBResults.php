@@ -43,15 +43,16 @@
   PRIMARY KEY (`id_product`)
 )";
 				$insertProducts="INSERT IGNORE INTO `products` VALUES (1,'Shoes'),(2,'Shirt'),(3,'Trousers'),(4,'Bag'),(5,'Sweaters')";
-				$createusersQuery="CREATE TABLE IF NOT EXISTS `users` (
+				$createusersQuery="CREATE TABLE `users` (
   `id_users` int(11) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   `type` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_users`),
   UNIQUE KEY `email_UNIQUE` (`email`)
 )";
-					$insertUsers="INSERT IGNORE INTO `users` VALUES (101,'xyz@xyz.com','xyz','buyer'),(102,'abc@abc.com','abc','inventory manager'),(103,'pqr@pqr.com','pqr','buyer'),(104,'def@def.com','def','inventory manager'),(105,'uvw@uvw.com','uvw','buyer')";
+					$insertUsers="INSERT INTO `users` VALUES (101,'XYZ','xyz@xyz.com','xyz','buyer'),(102,'ABC','abc@abc.com','abc','inventory manager'),(103,'PQR','pqr@pqr.com','pqr','buyer'),(104,'DEF','def@def.com','def','inventory manager'),(105,'UVW','uvw@uvw.com','uvw','buyer')";
 					if(mysql_query($createusersQuery)and mysql_query($createorderQuery) and mysql_query($createproductsQuery) and mysql_query($createOrderDetQuery) and mysql_query($insertUsers) and mysql_query($insertProducts) and mysql_query($insertOrder) and mysql_query($insertOrderDetails))
 					{
 					//Updating cost with discount
@@ -104,7 +105,7 @@
 						}
 
 						//Report for sales of last month
-						$querylastmonth="SELECT orders.id_orders,users.email,GROUP_CONCAT(products.name),count(order_details.id_orders),orders.date,orders.discount,sum(order_details.price) - sum(order_details.price) * (orders.discount/100) ,orders.mode_of_payment,orders.payment_status
+						$querylastmonth="SELECT orders.id_orders,users.email,users.name,GROUP_CONCAT(products.name),count(order_details.id_orders),orders.date,orders.discount,sum(order_details.price) - sum(order_details.price) * (orders.discount/100) ,orders.mode_of_payment,orders.payment_status
 			FROM MysqlAs1.order_details,orders,products,users
 			where order_details.id_orders=orders.id_orders
 			and order_details.id_products=products.id_product
@@ -112,7 +113,7 @@
 			and orders.date > DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH)
 			Group by orders.id_orders";
 
-						echo "</br></br><b>Sales report generated using :-</b></br>SELECT orders.id_orders,users.email,GROUP_CONCAT(products.name),count(order_details.id_orders),orders.date,orders.discount,sum(order_details.price) - sum(order_details.price) * (orders.discount/100) ,orders.mode_of_payment,orders.payment_status
+						echo "</br></br><b>Sales report generated using :-</b></br>SELECT orders.id_orders,users.email,users.name,GROUP_CONCAT(products.name),count(order_details.id_orders),orders.date,orders.discount,sum(order_details.price) - sum(order_details.price) * (orders.discount/100) ,orders.mode_of_payment,orders.payment_status
 			</br>FROM MysqlAs1.order_details,orders,products,users
 			</br>where order_details.id_orders=orders.id_orders
 			</br>and order_details.id_products=products.id_product
@@ -127,6 +128,7 @@
 							echo "<table border=1 cellspacing=0 width=950>";
 							echo "<th>Order id</th>";
 							echo "<th>Email</th>";
+							echo "<th>User Name</th>";
 							echo "<th>Name of Products</th>";
 							echo "<th>Number of products</th>";
 							echo "<th>Date</th>";
@@ -137,7 +139,7 @@
 							while($row=mysql_fetch_row($result))
 							{
 								echo "<tr>";
-								echo "<br><td>".$row[0]."</td><td>".$row[1]."</td><td>".$row[2]."</td><td>".$row[3]."</td><td>".$row[4]."</td><td>".$row[5]."</td><td>".$row[6]."</td><td>".$row[7]."</td><td>".$row[8]."</td>";
+								echo "<br><td>".$row[0]."</td><td>".$row[1]."</td><td>".$row[2]."</td><td>".$row[3]."</td><td>".$row[4]."</td><td>".$row[5]."</td><td>".$row[6]."</td><td>".$row[7]."</td><td>".$row[8]."</td><td>".$row[9]."</td>";
 								echo "</tr>";
 							}
 							echo "</table>";
