@@ -1,0 +1,121 @@
+<html>
+    <head>
+        <title>JS Assignment</title>
+        <script type="text/javascript">
+            function btnClick(x)
+            {
+                
+                if(document.getElementById('g').checked)
+                {
+                    if(x.bgColor=="Green")
+                    {
+                        alert("already Green");
+                    }
+                    else
+                    {
+                        x.bgColor = "Green";
+                    }    
+                }
+                else if(document.getElementById('b').checked)
+                {
+                    if(x.bgColor=="Blue")
+                    {
+                        alert("already Blue");
+                    }
+                    else
+                    {
+                        x.bgColor = "Blue";
+                    }   
+                }
+                else if(document.getElementById('r').checked)
+                {
+                    if(x.bgColor=="Red")
+                    {
+                        alert("already Red");
+                    }
+                    else
+                    {
+                        x.bgColor = "Red";
+                    }     
+                }
+            }
+            function reset() 
+            {
+                var table = document.getElementById('mytable');
+                for (var r = 0, n = table.rows.length; r < n; r++) 
+                {
+                    for (var c = 0, m = table.rows[r].cells.length; c < m; c++) 
+                    {
+                        table.rows[r].cells[c].bgColor="white";
+                    }
+                }
+            }
+            function shuffle_array(array) 
+            {
+                var ind = array.length, temp, randomIndex;
+                while (0 !== ind) 
+                {
+                    randomIndex = Math.floor(Math.random() * ind);
+                    ind -= 1;
+                    temp = array[ind];
+                    array[ind] = array[randomIndex];
+                    array[randomIndex] = temp;
+                }
+                return array;
+            }
+            function shuffle()
+            {
+                var table = document.getElementById('mytable');
+                var arrayElemCount=0;
+                var numarray=[];
+                for (var r = 0, n = table.rows.length; r < n; r++) 
+                {
+                    for (var c = 0, m = table.rows[r].cells.length; c < m; c++) 
+                    {
+                        arrayElemCount++;
+                        numarray.push(arrayElemCount);
+                    }
+                }
+                var i=0;
+                numarray=shuffle_array(numarray);
+                i=0;
+                for (var r = 0, n = table.rows.length; r < n; r++) 
+                {
+                    for (var c = 0, m = table.rows[r].cells.length; c < m; c++) 
+                    {
+                        elem=document.getElementById(""+numarray[i]);
+                        temp=table.rows[r].cells[c].bgColor;
+                        table.rows[r].cells[c].bgColor=elem.bgColor;
+                        elem.bgColor=temp;
+                        i++;
+                    }
+                }
+                
+            }
+        </script>
+    </head>
+    <body>
+        <input type="radio" name="color" id="g">Green</input>
+        <input type="radio" name="color" id="b">Blue</input>
+        <input type="radio" name="color" id="r">Red</input>
+        <table border=1 id="mytable" width=300px height=300px>
+            <tr>
+                <td onclick="btnClick(this)" value="1" id ="1"> 1 </td>
+                <td onclick="btnClick(this)" value="2" id ="2"> 2 </td>
+                <td onclick="btnClick(this)" value="3" id ="3"> 3 </td>
+            </tr>
+            <tr>
+                <td id="4" onclick="btnClick(this)" value="4"> 4 </td>
+                <td id="5" onclick="btnClick(this)" value="5"> 5 </td>
+                <td id="6" onclick="btnClick(this)" value="6"> 6 </td>
+            </tr>
+            <tr>
+                <td id="7" onclick="btnClick(this)" value="7"> 7 </td>
+                <td id="8" onclick="btnClick(this)" value="8"> 8 </td>
+                <td id="9" onclick="btnClick(this)" value="9"> 9 </td>
+            </tr>
+        </table>
+        <input type="reset" name="reset" id="reset" onclick="reset()"></input>
+        <input type="button" name="shuffle" id="shuffle" value="Shuffle" onclick="shuffle()"></input>
+    </body>
+</html>
