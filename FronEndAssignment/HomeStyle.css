@@ -1,0 +1,100 @@
+.nav .logo 
+{
+	width:200px;
+	float:left;	
+}
+.nav ul
+{
+	width:500px; 
+	float:right;
+}
+.nav li
+{
+	list-style: none;
+	padding: 10px;
+	float:left;
+}
+.nav li a
+{
+	text-decoration: none;
+	color: white;
+}
+
+.nav
+{
+	background-color: black;
+	color: white;
+	margin-bottom: 10px;
+}
+.nav .clear
+{
+	clear: both;
+}
+
+
+.main
+{
+	background-color: black;
+	color: white;
+	margin-bottom: 10px;
+}
+.main .photo
+{
+	width:300px;
+	float:left;
+}
+.main .content
+{
+	width:600px;
+	float:right;	
+}
+.main .Learnmore
+{
+	width:600px;
+	float:right;
+}
+.main a
+{
+	border: 1px solid black;
+	background-color: green;
+	margin-bottom: 10px;	
+}
+.main .clear
+{
+	clear:both;
+}
+.main a:hover
+{
+	background-color: yellow;
+}
+
+
+
+.footer ul
+{
+	float:left;
+}
+.footer li
+{
+	list-style: none;
+	padding: 10px;
+	float:left;
+}
+.footer .clear
+{
+	clear:both;
+}
+.footer li a
+{
+	text-decoration: none;
+	color: white;
+}
+.footer
+{
+	background-color: black;
+	color: white;
+}
+li:hover
+{
+	background-color: yellow;
+}
