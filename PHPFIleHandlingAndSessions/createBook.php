@@ -11,7 +11,7 @@
 		$bookName=$_POST['bookName'];
 		try
 		{
-			$db=new PDO('mysql:host=localhost;port=3306;dbname=BooksDetails','root','root');
+			include("database.php");
 			$sql="insert into books(bookName,username) values(:bookName,:username)";
 			$query=$db->prepare($sql);
 			$query->execute(array(':bookName'=>$bookName,':username'=>$username));

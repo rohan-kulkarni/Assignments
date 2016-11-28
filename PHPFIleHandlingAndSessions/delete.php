@@ -8,7 +8,7 @@
 	$username=$_SESSION['username'];
 	try
 	{
-		$db=new PDO('mysql:host=localhost;port=3306;dbname=BooksDetails','root','root');
+		include("database.php");
 		$db->exec("delete from books where bookName='".$bookName."'");
 		unlink("books/".$bookName.".txt");
 		echo "record deleted";

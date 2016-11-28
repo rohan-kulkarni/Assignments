@@ -39,7 +39,7 @@
 		$username=$_SESSION['username'];
 		try
 		{
-			$db=new PDO('mysql:host=localhost;port=3306;dbname=BooksDetails','root','root');
+			include("database.php");
 			$res=$db->query("select * from books where username='".$username."'",PDO::FETCH_ASSOC);
 
 			echo "<b><h1 align ='center'>Your Books ".$username." Are :-</h1></b><br/>";

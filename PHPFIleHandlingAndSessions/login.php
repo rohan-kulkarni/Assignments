@@ -10,7 +10,7 @@ if(isset($_POST['submit']))
 
 	try
 	{
-		$db=new PDO('mysql:host=localhost;port=3306;dbname=BooksDetails','root','root');
+		include("database.php");
 		$res=$db->query("select * from users where username='".$username."' and password='".$password."'",PDO::FETCH_ASSOC);
 		$count=0;
 		foreach ($res as $res) 

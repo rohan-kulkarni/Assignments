@@ -14,7 +14,7 @@
 			$username=$_SESSION['username'];
 			try
 			{
-				$db=new PDO('mysql:host=localhost;port=3306;dbname=BooksDetails','root','root');
+				include("database.php");
 				$res=$db->query("select * from books where username='".$username."'",PDO::FETCH_ASSOC);
 
 				foreach ($res as $result) 
