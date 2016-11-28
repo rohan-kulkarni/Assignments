@@ -12,9 +12,9 @@
 		try
 		{
 			include("database.php");
-			$sql="insert into books(bookName,username) values(:bookName,:username)";
+			$sql="insert into books(book_name,username) values(:book_name,:username)";
 			$query=$db->prepare($sql);
-			$query->execute(array(':bookName'=>$bookName,':username'=>$username));
+			$query->execute(array(':book_name'=>$bookName,':username'=>$username));
 			$file=fopen("books/".$bookName.".txt", "w");
 
 			fwrite($file, $content);
