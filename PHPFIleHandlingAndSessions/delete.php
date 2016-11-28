@@ -9,7 +9,7 @@
 	try
 	{
 		include("database.php");
-		$db->exec("delete from books where bookName='".$bookName."'");
+		$db->exec("delete from books where book_name='".$bookName."'");
 		unlink("books/".$bookName.".txt");
 		echo "record deleted";
 		@header("location:deleteContent.php");
