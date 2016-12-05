@@ -1,5 +1,5 @@
 <?php
-interface Currency {
-    public function getPrice();
-}
+	interface Currency {
+	    public function getPrice();
+	}
 ?>

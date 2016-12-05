@@ -1,11 +1,9 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['username']))
-	{
+	if(!isset($_SESSION['username'])){
 		echo "not poss";
 		@header("location:LoginScreen.html");
 	}
-
 	echo "Welcome ".$_SESSION['username'];
 ?>
 <!DOCTYPE html>

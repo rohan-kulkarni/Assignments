@@ -1,6 +1,5 @@
 <?php
-interface DBConnection
-{
-	public function connectDB();
-}
+	interface DBConnection{
+		public function connectDB();
+	}
 ?>

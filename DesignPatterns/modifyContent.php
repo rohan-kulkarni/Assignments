@@ -7,26 +7,21 @@
 	<form name="modify" method="post" action="appendContent.php">
 		<?php
 			session_start();
-			if(!isset($_SESSION['username']))
-			{
+			if(!isset($_SESSION['username'])){
 				@header("location:loginScreen.html");
 			}
 			$username=$_SESSION['username'];
-			try
-			{
+			try{
 				include("PostgreSQL.php");
 				$databaseConn=new PostgreSQL;
 				$db=$databaseConn->connectDB();
-				$res=$db->query("select * from books where username='".$username."'",PDO::FETCH_ASSOC);
-
-				foreach ($res as $result) 
-				{
+				$results=$db->query("select * from books where username='".$username."'",PDO::FETCH_ASSOC);
+				foreach ($results as $result) {
 					echo "<input type= 'submit' id='bookName' name='bookName' value='".trim($result['bookName'])."'></br>";
 				}
 				echo "</br></br><a href='landingPage.php'>Home</a>";
 			}
-			catch(Exception $e)
-			{
+			catch(Exception $e){
 				echo $e->getMessage();
 			}
 		?>

@@ -1,13 +1,11 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['username']))
-	{
+	if(!isset($_SESSION['username'])){
 		@header("location:loginScreen.html");
 	}
 	$bookName=$_POST['bookName'];
 	$username=$_SESSION['username'];
-	try
-	{
+	try{
 		include("PostgreSQL.php");
 		$databaseConn=new PostgreSQL;
 		$db=$databaseConn->connectDB();
@@ -18,9 +16,7 @@
 		@header("location:deleteContent.php");
 
 	}
-	catch(Exception $e)
-	{
+	catch(Exception $e){
 		echo $e->getMessage();
 	}
-
 ?>
