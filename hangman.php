@@ -7,13 +7,20 @@
         $fread = fread($fopen,filesize($file));
         $split = explode("\n", $fread);
         $array[] = null;
-        foreach ($split as $string)
-        {
-            array_push($array,$string);
+        if(!empty($split))
+        {   
+            foreach ($split as $string)
+            {
+                array_push($array,$string);
+            }
+            $wordIndex = array_rand($array,1);
+            $word = $array[$wordIndex];
+            return $word;
         }
-        $wordIndex = array_rand($array,1);
-        $word = $array[$wordIndex];
-        return $word;
+        else
+        {
+            echo "Failed To read Word";
+        }
     } 
     function setBlanks()
     {
