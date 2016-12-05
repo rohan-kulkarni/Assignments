@@ -5,16 +5,24 @@
     $pos=null;
     $wrongGuess=$_COOKIE["count"];
     $letterArray=str_split($word);
-    for($i=0;$i<strlen($word);$i++)
+    if(!empty(letterArray))
     {
-        if(strtolower($letterArray[$i])==$input)
+        for($i=0;$i<strlen($word);$i++)
         {
-            $pos=$i+1;
-            echo $pos;
+            if(strtolower($letterArray[$i])==$input)
+            {
+                $pos=$i+1;
+                echo $pos;
+            }
+        }
+        if($pos==null)
+        {
+            echo "not found";
         }
     }
-    if($pos==null)
+    else
     {
-        echo "not found";
+        echo "Word empty";
     }
+    
 ?>
